@@ -1,5 +1,13 @@
 /* jshint jquery: true, devel: true */
 
+/**
+ * This Script generates Random Content and only works with the correct structure given.
+ * Dont use it except you know what you're doing
+ * The programming style is very lash since its just a
+ * @type {string}
+ */
+
+
 //////////////////////////////
 // Variables and Options    //
 //////////////////////////////
@@ -104,6 +112,29 @@ var getToken = function () {
     });
 };
 
+function batchMitarbeiter() {
+    "use strict";
+    var count = $('#count').val();
+    if (!count) {
+        count = 1;
+    }
+    for (var i = 0; i < count; i++) {
+        generateMitarbeiter();
+    }
+}
+
+function batchKunde() {
+    "use strict";
+    var count = $('#count').val();
+    if (!count) {
+        count = 1;
+    }
+    for (var i = 0; i < count; i++) {
+        generateKunde();
+    }
+}
+
+
 
 /**
  * Neuer Mitarbeiter
@@ -186,7 +217,6 @@ var generateKunde = function () {
         text += '{{Remote Hardware Liste\n|Remote Hardware=' + remoteHardwareTitel + '\n}}\n';
     }
 
-
     // API Request senden:
     generatePage(titel, text, 'KUNDE');
 
@@ -253,6 +283,7 @@ var generateLokaleHardware = function (lokalesNetzwerkArray) {
 
         var text = '';
         var titel = item.titel;
+        var type = 'LOKALE HARDWARE';
 
         if (!token) {
             log('ERROR: No valid editToken found!');
@@ -275,6 +306,7 @@ var generateLokaleHardware = function (lokalesNetzwerkArray) {
 
         if (i === 0) {
             // ROUTER
+            type = 'LOKALER ROUTER';
             for (var d = 1; d < lokalesNetzwerkArray.length; d++) {
                 var device = lokalesNetzwerkArray[d];
                 text += '{{Vernetzung\n|Vernetzung=' + device.titel + '\n}}\n';
@@ -295,7 +327,7 @@ var generateLokaleHardware = function (lokalesNetzwerkArray) {
         text += '{{Problem Überschrift}}\n';
 
         // API Request senden:
-        generatePage(titel, text, 'LOKALE HARDWARE');
+        generatePage(titel, text, type);
 
     }
 

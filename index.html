@@ -12,14 +12,20 @@
 <body>
 <div class="container">
     <div class="span12">
-        <h1>Local Mediawiki Content Creator</h1>
+        <h1>Mediawiki Content Generator</h1>
 
-        <h2>Actions:</h2>
-        <button class="btn btn-large btn-primary" type="button" onclick="generateMitarbeiter();">Neuer Mitarbeiter</button>
-        <button class="btn btn-large btn-primary" type="button" onclick="generateKunde();">Neuer Kunde und Standorte</button>
-        <button class="btn btn-large btn-primary" type="button" onclick="generateRest();">Sonstige Inhalte (Abteilungen)</button>
+        <h3>Actions:</h3>
 
-        <h2>Messages:</h2>
+        <form class="form-inline" role="form">
+            <button class="btn btn-large btn-primary" type="button" onclick="batchMitarbeiter();">Neuer Mitarbeiter</button>
+            <button class="btn btn-large btn-primary" type="button" onclick="batchKunde();">Neuer Kunde,Standorte, Hardware</button>
+            <button class="btn btn-large btn-primary" type="button" onclick="generateRest();">Sonstige Inhalte (Abteilungen)</button>
+            <div class="form-group">
+                <input type="text" class="form-control" id="count" placeholder="Anzahl">
+            </div>
+        </form>
+
+        <h3>Messages:</h3>
         <div id="msg"></div>
 
     </div>
