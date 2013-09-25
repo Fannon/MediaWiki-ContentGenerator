@@ -4,7 +4,7 @@
 // Variables and Options    //
 //////////////////////////////
 
-var mediaWikiUrl = 'http://localhost/wiki';
+var mediaWikiUrl = 'http://192.168.2.104/wiki';
 var token = false;
 
 
@@ -13,6 +13,8 @@ var token = false;
 //////////////////////////////
 
 var data = {};
+
+var lokalesNetzwerk = [];
 
 data.vornamenArray = [
     "Isaac", "Clives Staples", "William", "Orson Scott", "Arthur", "Robert", "Frank", "Jules",
@@ -30,8 +32,7 @@ data.kundenVornamenArray = [
 ];
 
 data.kundenNachnamenArray = [
-    "Salomo", "Josef", "Kain", "Abel", "Saul", "Esther", "Habakuk", "Jeremia", "Jesaja", "Maleachi",
-    "Petrus", "Thomas", "Herodes"
+    "Tolkien", "Howard", "Pratchett", "Anthony", "Moorcock", "Le Guin", "Martin", "Erikson", "Feist", "Lewis"
 ];
 
 data.ortArray = [
@@ -49,9 +50,13 @@ data.abteilungenArray = [
 ];
 
 data.remoteHardwareArray = [
-    "10.1.1.75", "Cisco A1 Router", "D-Link A2", "10.1.1.62", "10.1.1.25", "10.1.1.16", "10.1.1.12",
-    "10.1.2.11", "Cisco A2 Router", "D-Link A3", "10.1.2.72", "10.1.2.55", "10.1.2.16", "10.1.2.12",
-    "10.1.3.75", "Cisco A3 Router", "D-Link A4", "10.1.3.82", "10.1.3.75", "10.1.3.16", "10.1.3.12"
+    "10.1.1.75", "10.1.1.62", "10.1.1.25", "10.1.1.16", "10.1.1.12",
+    "10.1.2.11", "10.1.2.72", "10.1.2.55", "10.1.2.16", "10.1.2.12",
+    "10.1.3.75", "10.1.3.82", "10.1.3.75", "10.1.3.16", "10.1.3.12"
+];
+
+data.herstellerArray = [
+    "Microsoft", "Cisco", "D-Link", "Realtek", "Siemens", "Dell", "Lenovo", "TP-Link", "Xerox"
 ];
 
 data.softwareArray = [
@@ -59,9 +64,7 @@ data.softwareArray = [
     "Ubuntu Server", "Debian Server", "Libre Office"
 ];
 
-data.herstellerArray = [
-    "Microsoft", "Cisco", "D-Link", "Realtek", "Siemens", "Dell", "Lenovo", "TP-Link", "Xerox"
-];
+
 
 
 //////////////////////////////
@@ -127,34 +130,19 @@ var generateMitarbeiter = function () {
     // SONSTIGE DATEN
 
     var abteilung = randomElement(data.abteilungenArray);
-    var hardware = randomElement(data.remoteHardwareArray) + ', ' + randomElement(data.remoteHardwareArray) + ', ' + randomElement(data.remoteHardwareArray);
-    var software = randomElement(data.softwareArray) + ', ' + randomElement(data.softwareArray);
+    var hardware = randomElement(data.remoteHardwareArray) + ', ' + getHardwareModellName().titel + ', ' + getHardwareModellName().titel + ', ' + getHardwareModellName().titel;
+    var software = randomElement(data.softwareArray) + ', ' + randomElement(data.softwareArray) + ', ' + randomElement(data.softwareArray);
 
     text +=
         '{{Mitarbeiter Daten' + '\n' +
             '|Abteilung=' + abteilung + '\n' +
-            '|Hardware=' + hardware + '\n' +
+            '|Hardwaremodell=' + hardware + '\n' +
             '|Software=' + software + '\n' +
             '}}' + '\n\n';
 
 
-    // API REQUEST:
-    $.post(mediaWikiUrl + '/api.php?', {
-        action: 'edit',
-        title: titel,
-        text: text,
-        token: token,
-        format: 'json'
-    }, function (data) {
-        if (data.error) {
-            log('FEHLER BEIM API AUFRUF!');
-            console.dir(data);
-        }
-        console.log('Neuer Kunde - Request erfolgreich:');
-        console.log(text);
-        console.dir(data);
-        log('MITARBEITER <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
-    });
+    // API Request senden:
+    generatePage(titel, text, 'MITARBEITER');
 
     return titel;
 
@@ -175,6 +163,10 @@ var generateKunde = function () {
         return false;
     }
 
+    // Kundendaten
+    text += '{{Kundendaten\n';
+    text += '|Kunde seit=' + Math.floor(1990 + Math.random() * 24) + '\n';
+    text += '|Beschreibung=Keine Bemerkungen\n}}\n';
 
     // Standorte verlinken & generieren
     text += '{{Standort Überschrift}}\n';
@@ -194,32 +186,19 @@ var generateKunde = function () {
         text += '{{Remote Hardware Liste\n|Remote Hardware=' + remoteHardwareTitel + '\n}}\n';
     }
 
-    // Bemerkung
-    text += '{{Kunde Infos\n|Bemerkungen=Keine Bemerkungen\n}}\n';
 
-    // API Request senden
-    $.post(mediaWikiUrl + '/api.php?', {
-        action: 'edit',
-        title: titel,
-        text: text,
-        token: token,
-        format: 'json'
-    }, function (data) {
-        if (data.error) {
-            log('FEHLER BEIM API AUFRUF!');
-            console.dir(data);
-        }
-        console.log('Neuer Kunde - Request erfolgreich:');
-        console.log(text);
-        console.dir(data);
-        log('KUNDE <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
-    });
+    // API Request senden:
+    generatePage(titel, text, 'KUNDE');
 
     return titel;
 
 };
 
-
+/**
+ * Standort generieren
+ * @param standortTitel
+ * @returns {*}
+ */
 var generateStandort = function (standortTitel) {
     "use strict";
 
@@ -240,109 +219,85 @@ var generateStandort = function (standortTitel) {
 
     // LOKALE HARDWARE
     text += '{{Lokale Hardware Überschrift}}\n';
-    for (var i = 0; i < Math.random() * 7; i++) {
+
+    lokalesNetzwerk = [];
+
+    for (var i = 0; i < Math.random() * 10; i++) {
         var ip = Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
-        var hardwareTitel = standortTitel + '-' + ip;
-        text += '{{Lokale Hardware\n|Hardware=' + hardwareTitel + '\n}}\n';
+        var hardwareTitel = standortTitel + '--' + ip;
+        text += '{{Lokale Hardware Liste\n|Hardware=' + hardwareTitel + '\n}}\n';
         // SUBROUTINE: Standorte generieren
-        generateLokaleHardware(hardwareTitel, ip);
+        lokalesNetzwerk.push({
+            titel: hardwareTitel,
+            ip: ip
+        });
     }
 
+    // SUBROUTINE: Lokale Hardware generieren
+    generateLokaleHardware(lokalesNetzwerk);
 
-    // API REQUEST:
-    $.post(mediaWikiUrl + '/api.php?', {
-        action: 'edit',
-        title: titel,
-        text: text,
-        token: token,
-        format: 'json'
-    }, function (data) {
-
-        if (data.error) {
-            log('FEHLER BEIM API AUFRUF!');
-            console.dir(data);
-        }
-
-        console.log('Neuer Standort - Request erfolgreich:');
-        console.log(text);
-        console.dir(data);
-        log('STANDORT <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
-    });
+    // API Request senden:
+    generatePage(titel, text, 'STANDORT');
 
     return titel;
 
 };
 
-var generateLokaleHardware = function (hardwareTitel, ip) {
+var generateLokaleHardware = function (lokalesNetzwerkArray) {
     "use strict";
 
-    console.log('Lokale Hardware generieren: ' + hardwareTitel);
+    for (var i = 0; i < lokalesNetzwerkArray.length; i++) {
 
-    var text = '';
-    var titel = hardwareTitel;
+        var item = lokalesNetzwerkArray[i];
+        console.log('Lokale Hardware generieren: ' + item.titel);
 
-    if (!token) {
-        log('ERROR: No valid editToken found!');
-        return false;
-    }
+        var text = '';
+        var titel = item.titel;
 
-    // HARDWARE DATEN
-    var hersteller = randomElement(data.herstellerArray);
-    var bezeichnung = 'Z-' + Math.floor(Math.random() * 8);
-    var hardwaremodell = hersteller + ' ' + bezeichnung;
-    text += '{{Hardware\n';
-    text += '|IP=' + ip + '\n';
-    text += '|Hardwaremodell=' + hardwaremodell + '\n';
-    text += '|Bezeichnung=' + 'EZ-' + Math.floor(Math.random() * 2048) + '\n';
-    text += '|Domäne=MSHEIMNETZ\n';
-    text += '}}\n';
-
-    // SUBROUTINE: Generiere Modell
-    generateHardwaremodell(hersteller, bezeichnung);
-
-    // VERNETZUNG
-    text += '{{Vernetzung Überschrift}}\n';
-
-    // SOFTWARE LISTE
-    text += '{{Software Überschrift}}\n';
-
-    for (var i = 0; i < Math.random() * 5; i++) {
-        var softwareTitel = randomElement(data.softwareArray);
-        text += '{{Software Liste\n|Software=' + softwareTitel + '\n}}\n';
-    }
-
-    // PROBLEME
-    text += '{{Problem Überschrift}}\n';
-    // {{Problem
-    // |Problem=Internet geht nicht
-    // |Lösung=Router neustarten
-    // }}
-    // {{Problem
-    // |Problem=Geht nicht
-    // |Lösung=Angeschlossen?
-    // }}
-
-    // API REQUEST:
-    $.post(mediaWikiUrl + '/api.php?', {
-        action: 'edit',
-        title: titel,
-        text: text,
-        token: token,
-        format: 'json'
-    }, function (data) {
-
-        if (data.error) {
-            log('FEHLER BEIM API AUFRUF!');
-            console.dir(data);
+        if (!token) {
+            log('ERROR: No valid editToken found!');
         }
 
-        console.log('Neue lokale Hardware - Request erfolgreich:');
-        console.log(text);
-        console.dir(data);
-        log('LOKALE HARDWARE <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
-    });
+        // HARDWARE DATEN
+        var hardware = getHardwareModellName();
+        text += '{{Hardware Daten\n';
+        text += '|IP=' + item.ip + '\n';
+        text += '|Hardwaremodell=' + hardware.titel + '\n';
+        text += '|Bezeichnung=' + 'EZ-' + Math.floor(Math.random() * 2048) + '\n';
+        text += '|Domäne=MSHEIMNETZ\n';
+        text += '}}\n';
 
-    return titel;
+        // SUBROUTINE: Generiere Modell
+        generateHardwaremodell(hardware.hersteller, hardware.bezeichnung);
+
+        // VERNETZUNG
+        text += '{{Vernetzung Überschrift}}\n';
+
+        if (i === 0) {
+            // ROUTER
+            for (var d = 1; d < lokalesNetzwerkArray.length; d++) {
+                var device = lokalesNetzwerkArray[d];
+                text += '{{Vernetzung\n|Vernetzung=' + device.titel + '\n}}\n';
+            }
+        }
+
+        // TODO: Vernetzung generieren
+
+        // SOFTWARE LISTE
+        text += '{{Software Überschrift}}\n';
+
+        for (var j = 0; j < Math.random() * 5; j++) {
+            var softwareTitel = randomElement(data.softwareArray);
+            text += '{{Software Liste\n|Software=' + softwareTitel + '\n}}\n';
+        }
+
+        // PROBLEME
+        text += '{{Problem Überschrift}}\n';
+
+        // API Request senden:
+        generatePage(titel, text, 'LOKALE HARDWARE');
+
+    }
 
 };
 
@@ -360,7 +315,7 @@ var generateHardwaremodell = function (hersteller, bezeichnung) {
     }
 
     // HARDWARE DATEN
-    text += '{{Hardwaremodell\n';
+    text += '{{Hardwaremodell Daten\n';
     text += '|Hersteller=' + hersteller + '\n';
     text += '|Bezeichnung=' + bezeichnung + '\n';
     text += '}}\n';
@@ -369,6 +324,43 @@ var generateHardwaremodell = function (hersteller, bezeichnung) {
     text += '{{Problem Überschrift}}\n';
     text += '{{Problem\n |Problem=Internet geht nicht\n|Lösung=Router neustarten\n }}\n';
     text += '{{Problem\n |Problem=Kaputt\n|Lösung=Neu kaufen\n}}\n';
+
+    // API Request senden:
+    generatePage(titel, text, 'HARDWAREMODELL');
+
+    return titel;
+
+};
+
+/**
+ * Generiert sonstige Seiten
+ * Aktuell: Abteilungen
+ */
+function generateRest() {
+    "use strict";
+
+    // Generate Abteilungen (leerer Inhalt)
+    for (var i = 0; i < data.abteilungenArray.length; i++) {
+        var titel = data.abteilungenArray[i];
+        var text = '{{Abteilung}}\nNoch kein Inhalt.';
+        generatePage(titel, text, 'ABTEILUNG');
+    }
+
+}
+
+
+//////////////////////////////
+// Hilfsfunktionen          //
+//////////////////////////////
+
+/**
+ * Erstellt die Seite per API Request
+ * @param titel
+ * @param text
+ * @param typ
+ */
+function generatePage(titel, text, typ) {
+    "use strict";
 
     // API REQUEST:
     $.post(mediaWikiUrl + '/api.php?', {
@@ -387,18 +379,22 @@ var generateHardwaremodell = function (hersteller, bezeichnung) {
         console.log('Neues Hardwaremodell - Request erfolgreich:');
         console.log(text);
         console.dir(data);
-        log('HARDWAREMODELL <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
+        log(typ.toUpperCase() + ' <a href="' + mediaWikiUrl + '/index.php?curid=' + data.edit.pageid + '" target="_blank">' + titel + '</a> CREATED / EDITED with ' + data.edit.result);
     });
+}
 
-    return titel;
+function getHardwareModellName() {
+    "use strict";
 
-};
+    var hersteller = randomElement(data.herstellerArray);
+    var bezeichnung = 'Z-' + Math.floor(Math.random() * 5);
 
-
-//////////////////////////////
-// Hilfsfunktionen          //
-//////////////////////////////
-
+    return {
+        titel: hersteller + ' ' + bezeichnung,
+        bezeichnung: bezeichnung,
+        hersteller: hersteller
+    };
+}
 
 function generateKontaktdaten() {
     "use strict";
