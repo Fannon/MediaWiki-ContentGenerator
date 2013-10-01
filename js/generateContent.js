@@ -26,21 +26,22 @@ var lokalesNetzwerk = [];
 
 data.vornamenArray = [
     "Isaac", "Clives Staples", "William", "Orson Scott", "Arthur", "Robert", "Frank", "Jules",
-    "H. G.", "Douglas", "Ursula", "Philip", "Ray", "George", "Dan", "Thomas", "G. K."
+    "H. G.", "Douglas", "Ursula", "Philip", "Ray", "George", "Dan", "Thomas", "G. K.", "Fritz"
 ];
 
 data.nachnamenArray = [
     "Dick", "Lewis", "Clarke", "Asimov", "Heinlein", "Herbert", "Card", "Gibson", "Bradbury",
-    "Verne", "Wells", "Orwell", "Simmons", "Adams", "Morus", "Chesterton"
+    "Verne", "Wells", "Orwell", "Simmons", "Adams", "Morus", "Chesterton", "Lang"
 ];
 
 data.kundenVornamenArray = [
     "Computer", "Kaufhaus", "Metzgerei", "Elektronikfachhandel", "Mr.", "XXXL", "Friseur", "Pizzeria",
-    "IT"
+    "IT", "Baumarkt", "Elektro", "Kanzelei", "Praxis", "Gasthof", "Schneiderei", "Second Hand", "Hutladen"
 ];
 
 data.kundenNachnamenArray = [
-    "Tolkien", "Howard", "Pratchett", "Anthony", "Moorcock", "Le Guin", "Martin", "Erikson", "Feist", "Lewis"
+    "Ottokar", "Waldemar", "Willhelm", "Gundola", "Gerfried", "Edeltraut", "Bertel", "Otwin", "Siegfried", "Herbert",
+    "Seppl", "Brunhilde", "Wastel", "Rolf", "Norbert", "Ute", "Gunther", "Brünhild", "Rüdiger"
 ];
 
 data.ortArray = [
@@ -49,7 +50,8 @@ data.ortArray = [
 
 data.strasseArray = [
     "Am Flugplatz", "George Orwell Platz", "Hauptstrasse", "Augustinerstrasse", "Rosental",
-    "Viktualienmarkt", "Maximiliansplatz", "Oskar-von-Miller-Ring", "Ludwigstrasse", "Leopoldstrasse"
+    "Viktualienmarkt", "Maximiliansplatz", "Oskar-von-Miller-Ring", "Ludwigstrasse", "Leopoldstrasse",
+    "Adelgundenstraße"
 ];
 
 data.abteilungenArray = [
@@ -68,11 +70,9 @@ data.herstellerArray = [
 ];
 
 data.softwareArray = [
-    "MS Office 2013", "MS Office 2010", "Adobe Photoshop", "MS Excel 2013", "MS Access 2013",
-    "Ubuntu Server", "Debian Server", "Libre Office"
+    "MS Office 2013", "MS Office 2010", "MS Excel 2013", "MS Access 2013", "MS Outlook 2013", "TeamViewer",
+    "Ubuntu Server", "Debian Server", "Libre Office", "MS Windows 7", "MS Windows 8"
 ];
-
-
 
 
 //////////////////////////////
@@ -114,7 +114,7 @@ var getToken = function () {
 
 function batchMitarbeiter() {
     "use strict";
-    var count = $('#count').val();
+    var count = parseInt($('#count').val(), 10);
     if (!count) {
         count = 1;
     }
@@ -125,7 +125,7 @@ function batchMitarbeiter() {
 
 function batchKunde() {
     "use strict";
-    var count = $('#count').val();
+    var count = parseInt($('#count').val(), 10);
     if (!count) {
         count = 1;
     }
@@ -161,7 +161,7 @@ var generateMitarbeiter = function () {
     // SONSTIGE DATEN
 
     var abteilung = randomElement(data.abteilungenArray);
-    var hardware = randomElement(data.remoteHardwareArray) + ', ' + getHardwareModellName().titel + ', ' + getHardwareModellName().titel + ', ' + getHardwareModellName().titel;
+    var hardware = getHardwareModellName().titel + ', ' + getHardwareModellName().titel + ', ' + getHardwareModellName().titel;
     var software = randomElement(data.softwareArray) + ', ' + randomElement(data.softwareArray) + ', ' + randomElement(data.softwareArray);
 
     text +=
@@ -252,7 +252,10 @@ var generateStandort = function (standortTitel) {
 
     lokalesNetzwerk = [];
 
-    for (var i = 0; i < Math.random() * 10; i++) {
+    var anzahlLokaleHardware = Math.floor(Math.random() * 20) + 2;
+    console.log('Generiere Lokale Hardware: #' + anzahlLokaleHardware);
+
+    for (var i = 0; i < anzahlLokaleHardware; i++) {
         var ip = Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
         var hardwareTitel = standortTitel + '--' + ip;
         text += '{{Lokale Hardware Liste\n|Hardware=' + hardwareTitel + '\n}}\n';

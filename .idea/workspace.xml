@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9570a33-1fa5-4d4b-bf76-92950c3d1247" name="Default" comment="">
+    <list default="true" id="c9570a33-1fa5-4d4b-bf76-92950c3d1247" name="Default" comment="Batch Prozess">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/generateContent.js" afterPath="$PROJECT_DIR$/js/generateContent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mediawiki-scripts.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380140773658" ignored="false" />
+    <file path="/Dummy.txt" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380619789508" ignored="false" />
     <file path="/a.coffee" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1379606413519" ignored="false" />
-    <file path="/generateContent.js" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380141753867" ignored="false" />
+    <file path="/generateContent.js" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380619994612" ignored="false" />
     <file path="/benchmark.js" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1379672188365" ignored="false" />
     <file path="/benchmark.html" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1379613822337" ignored="false" />
-    <file path="/index.html" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380141762599" ignored="false" />
+    <file path="/index.html" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380175880677" ignored="false" />
+    <file path="/InstallPackages.sh" changelist="c9570a33-1fa5-4d4b-bf76-92950c3d1247" time="1380190741976" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,21 +33,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="generateContent.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="generateContent.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/generateContent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="24" selection-start="3382" selection-end="3382" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="74" column="2" selection-start="2528" selection-end="2528" vertical-scroll-proportion="0.41855204">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="36" selection-start="909" selection-end="909" vertical-scroll-proportion="0.4293915">
+            <state line="19" column="57" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -75,8 +73,9 @@
         <option value="$PROJECT_DIR$/generateContent.html" />
         <option value="$PROJECT_DIR$/benchmark.html" />
         <option value="$PROJECT_DIR$/js/benchmark.js" />
-        <option value="$PROJECT_DIR$/js/generateContent.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="C:/Dropbox/Dokumente/Studium/IAM/IA7-Bachelorarbeit/Skripte/InstallPackages.sh" />
+        <option value="$PROJECT_DIR$/js/generateContent.js" />
       </list>
     </option>
   </component>
@@ -306,7 +305,11 @@
       <created>1380140781728</created>
       <updated>1380140781728</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Batch Prozess">
+      <created>1380141808457</created>
+      <updated>1380141808457</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -330,15 +333,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12552084" sideWeight="0.6706392" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1390625" sideWeight="0.6706392" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17135416" sideWeight="0.6706392" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -348,6 +350,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -395,7 +398,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="An neue Struktur angepasst&#10;Vernetzung hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Batch Prozess" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -414,6 +417,7 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Moved to seperate Project" />
     <MESSAGE value="An neue Struktur angepasst&#10;Vernetzung hinzugefügt" />
+    <MESSAGE value="Batch Prozess" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -431,12 +435,59 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="88" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/generateContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="88" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/generateContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="88" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/generateContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="46" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/generateContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="203" column="19" selection-start="5631" selection-end="5631" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -450,9 +501,7 @@
     <entry file="file://$PROJECT_DIR$/js/generateContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="204" column="21" selection-start="5654" selection-end="5654" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -466,33 +515,32 @@
     <entry file="file://$PROJECT_DIR$/js/generateContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="242" column="75" selection-start="6730" selection-end="6730" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/generateContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="242" column="75" selection-start="6730" selection-end="6730" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Dropbox/Dokumente/Studium/IAM/IA7-Bachelorarbeit/Skripte/InstallPackages.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.18952063" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="57" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/generateContent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="24" selection-start="3382" selection-end="3382" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="36" selection-start="909" selection-end="909" vertical-scroll-proportion="0.4293915">
+        <state line="74" column="2" selection-start="2528" selection-end="2528" vertical-scroll-proportion="0.41855204">
           <folding />
         </state>
       </provider>
